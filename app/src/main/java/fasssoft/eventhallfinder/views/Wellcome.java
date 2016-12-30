@@ -61,10 +61,12 @@ public class Wellcome extends AppCompatActivity {
                                 datumHallDetailsList.add(datumHallDetails[i]);
                             }///// work after
                             hallDetailPojo.setData(datumHallDetailsList);
-
+//test comit on git
+                            int a=000000000000000;
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
+
                     }
                 }, new Response.ErrorListener() {
                     @Override
