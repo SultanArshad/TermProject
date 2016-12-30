@@ -26,56 +26,56 @@ import fasssoft.eventhallfinder.models.DatumLogin;
 import fasssoft.eventhallfinder.models.HallDetailPojo;
 import fasssoft.eventhallfinder.models.LoginPojo;
 import fasssoft.eventhallfinder.utils.urlClass;
+import fasssoft.eventhallfinder.views.FragmentActivities.ShowHallsListActivity;
 
 public class Wellcome extends AppCompatActivity {
     Button btnShowWel;
-    DatumHallDetail[] datumHallDetails;
-    ArrayList<DatumHallDetail> datumHallDetailsList;
-    HallDetailPojo hallDetailPojo;
+//    DatumHallDetail[] datumHallDetails;
+//    ArrayList<DatumHallDetail> datumHallDetailsList;
+//    HallDetailPojo hallDetailPojo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wellcome);
         btnShowWel = (Button) findViewById(R.id.btnShowWel);
-        datumHallDetailsList = new ArrayList<>();
-        hallDetailPojo = new HallDetailPojo();
+//        datumHallDetailsList = new ArrayList<>();
+//        hallDetailPojo = new HallDetailPojo();
         btnShowWel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                StringRequest stringRequest = new StringRequest(Request.Method.GET, urlClass.apihalldetails, new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            JSONArray jsonArray = jsonObject.getJSONArray("data");
-                            datumHallDetails = new DatumHallDetail[jsonArray.length()];
-                            for (int i = 0; i < jsonArray.length(); i++) {
-                                JSONObject obj = jsonArray.getJSONObject(i);
-                                datumHallDetails[i] = new DatumHallDetail();
-                                datumHallDetails[i].setHallname(obj.getString("hallname"));
-                                datumHallDetails[i].setOwnername(obj.getString("ownername"));
-                                datumHallDetails[i].setOwnerMobile(obj.getString("owner_mobile"));
-                                datumHallDetails[i].setHallLocation(obj.getString("hall_location"));
-                                datumHallDetailsList.add(datumHallDetails[i]);
-                            }///// work after
-                            hallDetailPojo.setData(datumHallDetailsList);
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
-                    }
-                });
-                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-                requestQueue.add(stringRequest);
-                Intent intent = new Intent(getApplicationContext(), Showhalls.class);
+//                StringRequest stringRequest = new StringRequest(Request.Method.GET, urlClass.apihalldetails, new Response.Listener<String>() {
+//                    @Override
+//                    public void onResponse(String response) {
+//                        Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
+//                        try {
+//                            JSONObject jsonObject = new JSONObject(response);
+//                            JSONArray jsonArray = jsonObject.getJSONArray("data");
+//                            datumHallDetails = new DatumHallDetail[jsonArray.length()];
+//                            for (int i = 0; i < jsonArray.length(); i++) {
+//                                JSONObject obj = jsonArray.getJSONObject(i);
+//                                datumHallDetails[i] = new DatumHallDetail();
+//                                datumHallDetails[i].setHallname(obj.getString("hallname"));
+//                                datumHallDetails[i].setOwnername(obj.getString("ownername"));
+//                                datumHallDetails[i].setOwnerMobile(obj.getString("owner_mobile"));
+//                                datumHallDetails[i].setHallLocation(obj.getString("hall_location"));
+//                                datumHallDetailsList.add(datumHallDetails[i]);
+//                            }///// work after
+//                            hallDetailPojo.setData(datumHallDetailsList);
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                        }
+//
+//                    }
+//                }, new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                        Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+//                    }
+//                });
+//                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+//                requestQueue.add(stringRequest);
+                Intent intent = new Intent(getApplicationContext(), ShowHallsListActivity.class);
                 startActivity(intent);
             }
         });

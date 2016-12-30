@@ -1,4 +1,4 @@
-package fasssoft.eventhallfinder.views;
+package fasssoft.eventhallfinder.views.LoginSinup;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -26,6 +26,8 @@ import fasssoft.eventhallfinder.R;
 import fasssoft.eventhallfinder.models.DatumLogin;
 import fasssoft.eventhallfinder.models.LoginPojo;
 import fasssoft.eventhallfinder.utils.urlClass;
+import fasssoft.eventhallfinder.views.Wellcome;
+import fasssoft.eventhallfinder.views.main;
 
 public class signin extends AppCompatActivity {
 

@@ -8,6 +8,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import fasssoft.eventhallfinder.R;
+import fasssoft.eventhallfinder.views.LoginSinup.signin;
+import fasssoft.eventhallfinder.views.LoginSinup.signup;
 
 public class main extends AppCompatActivity {
     TextView sin;

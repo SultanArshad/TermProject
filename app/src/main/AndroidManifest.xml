@@ -17,10 +17,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".views.signin" />
-        <activity android:name=".views.signup" />
+        <activity android:name=".views.LoginSinup.signin" />
+        <activity android:name=".views.LoginSinup.signup" />
         <activity android:name=".views.Wellcome" />
-        <activity android:name=".views.Showhalls"></activity>
+        <activity android:name=".views.Showhalls" />
+        <activity android:name=".views.FragmentActivities.ShowHallsListActivity" />
+        <activity android:name=".views.FragmentActivities.ShowHallsDetailActivity" />
     </application>
 
 </manifest>

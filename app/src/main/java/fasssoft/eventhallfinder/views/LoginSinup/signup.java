@@ -1,10 +1,9 @@
-package fasssoft.eventhallfinder.views;
+package fasssoft.eventhallfinder.views.LoginSinup;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -22,8 +21,7 @@ import java.util.Map;
 
 import fasssoft.eventhallfinder.R;
 import fasssoft.eventhallfinder.utils.urlClass;
-
-import static android.accounts.AccountManager.KEY_PASSWORD;
+import fasssoft.eventhallfinder.views.main;
 
 public class signup extends AppCompatActivity {
     ImageView sback;
