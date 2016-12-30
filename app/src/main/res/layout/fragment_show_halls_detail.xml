@@ -1,26 +1,99 @@
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-tools:context="fasssoft.eventhallfinder.Fragments.ShowHallsDetailFragment">
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="fasssoft.eventhallfinder.Fragments.ShowHallsDetailFragment">
 
-<TextView
-    android:id="@+id/tvTitle"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_centerHorizontal="true"
-    android:layout_centerVertical="true"
-    android:text="Item Title"
-    android:textAppearance="?android:attr/textAppearanceLarge" />
+        <TextView
+            android:id="@+id/tvDetailHallName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="17dp"
+            android:text="Hall Name"
+            android:textSize="29sp" />
 
-<TextView
-    android:id="@+id/tvBody"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_below="@+id/tvTitle"
-    android:layout_centerHorizontal="true"
-    android:layout_marginTop="19dp"
-    android:text="Item Body" />
+        <TextView
+            android:id="@+id/tvDetailOwNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
-</RelativeLayout>
+            android:layout_alignLeft="@+id/tvDetailLoc"
+            android:layout_alignStart="@+id/tvDetailLoc"
+            android:layout_below="@+id/tvDetailOwName"
+            android:layout_marginTop="38dp"
+            android:text="number"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tvDetailOwName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvDetailHallName"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:text="oname"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tvDetailLoc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/tvDetailOwName"
+            android:layout_alignStart="@+id/tvDetailOwName"
+            android:layout_below="@+id/tvDetailOwNumber"
+            android:layout_marginTop="51dp"
+            android:text="loca"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/btnDel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvDetailLoc"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="40dp"
+            android:layout_toLeftOf="@+id/tvDetailLoc"
+            android:layout_toStartOf="@+id/tvDetailLoc"
+            android:text="Delete" />
+
+        <Button
+            android:id="@+id/btnEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/btnDel"
+            android:layout_toRightOf="@+id/btnDel"
+            android:text="Edit" />
+
+        <TextView
+            android:text="Owner Name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/tvDetailOwName"
+            android:layout_toLeftOf="@+id/tvDetailHallName"
+            android:layout_toStartOf="@+id/tvDetailHallName"
+            android:layout_marginRight="30dp"
+            android:layout_marginEnd="30dp"
+            android:id="@+id/textView6" />
+
+        <TextView
+            android:text="Owner Mobile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/tvDetailOwNumber"
+            android:layout_alignRight="@+id/textView6"
+            android:layout_alignEnd="@+id/textView6"
+            android:id="@+id/textView7" />
+
+        <TextView
+            android:text="Location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/btnDel"
+            android:layout_alignLeft="@+id/textView7"
+            android:layout_alignStart="@+id/textView7"
+            android:id="@+id/textView8" />
+    </RelativeLayout>
