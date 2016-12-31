@@ -63,6 +63,7 @@ public class ShowHallsListFragment extends Fragment {
                         datumHallDetails[i].setOwnername(obj.getString("ownername"));
                         datumHallDetails[i].setOwnerMobile(obj.getString("owner_mobile"));
                         datumHallDetails[i].setHallLocation(obj.getString("hall_location"));
+                        datumHallDetails[i].setId(obj.getInt("id"));
                         datumHallDetailsList.add(datumHallDetails[i]);
                     }///// work after
                     hallDetailPojo.setData(datumHallDetailsList);

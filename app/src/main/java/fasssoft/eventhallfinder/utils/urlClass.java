@@ -8,6 +8,6 @@ public class urlClass {
 
     public static final String url = "http://192.168.10.7/api/";
     public static  final String apilogintests=url+"logintests";
-    public static  final String apihalldetails=url+"halldetails";
+    public static  final String apihalldetails=url+"halldetails/";
 
 }

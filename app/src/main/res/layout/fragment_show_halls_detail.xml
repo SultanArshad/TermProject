@@ -28,16 +28,6 @@
             android:textSize="15sp" />
 
         <TextView
-            android:id="@+id/tvDetailOwName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tvDetailHallName"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="40dp"
-            android:text="oname"
-            android:textSize="15sp" />
-
-        <TextView
             android:id="@+id/tvDetailLoc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -69,17 +59,6 @@
             android:text="Edit" />
 
         <TextView
-            android:text="Owner Name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/tvDetailOwName"
-            android:layout_toLeftOf="@+id/tvDetailHallName"
-            android:layout_toStartOf="@+id/tvDetailHallName"
-            android:layout_marginRight="30dp"
-            android:layout_marginEnd="30dp"
-            android:id="@+id/textView6" />
-
-        <TextView
             android:text="Owner Mobile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -96,4 +75,26 @@
             android:layout_alignLeft="@+id/textView7"
             android:layout_alignStart="@+id/textView7"
             android:id="@+id/textView8" />
+
+        <TextView
+            android:id="@+id/tvDetailOwName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="37dp"
+            android:text="oname"
+            android:textSize="15sp"
+            android:layout_below="@+id/tvDetailHallName"
+            android:layout_alignRight="@+id/tvDetailHallName"
+            android:layout_alignEnd="@+id/tvDetailHallName"
+            android:layout_marginRight="18dp"
+            android:layout_marginEnd="18dp" />
+
+        <TextView
+            android:text="Owner Name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView6"
+            android:layout_alignTop="@+id/tvDetailOwName"
+            android:layout_alignLeft="@+id/btnDel"
+            android:layout_alignStart="@+id/btnDel" />
     </RelativeLayout>
