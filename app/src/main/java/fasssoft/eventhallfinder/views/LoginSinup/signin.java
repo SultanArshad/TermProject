@@ -23,7 +23,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import fasssoft.eventhallfinder.R;
+import fasssoft.eventhallfinder.models.DatumHallDetail;
 import fasssoft.eventhallfinder.models.DatumLogin;
+import fasssoft.eventhallfinder.models.HallDetailPojo;
 import fasssoft.eventhallfinder.models.LoginPojo;
 import fasssoft.eventhallfinder.utils.urlClass;
 import fasssoft.eventhallfinder.views.Wellcome;
@@ -39,6 +41,10 @@ public class signin extends AppCompatActivity {
     ArrayList<DatumLogin> datumLoginList;
     LoginPojo loginPojo;
     Boolean TAG = false;
+    private DatumLogin login;
+   //////
+
+    /////
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,6 +102,9 @@ public class signin extends AppCompatActivity {
                             if (TAG == true) {
                                 Toast.makeText(getApplicationContext(), "singn succ", Toast.LENGTH_LONG).show();
                                 Intent intent = new Intent(signin.this, Wellcome.class);
+                                intent.putExtra("hallname",login.getHallname());
+                                intent.putExtra("owname",login.getName());
+                                intent.putExtra("hallloc",login.getLocation());
                                 startActivity(intent);
                             } else {
                                 TAG = false;

@@ -10,36 +10,48 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="fasssoft.eventhallfinder.views.Wellcome">
 
+    <Button
+        android:text="Show Hall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnShowWel"
+        android:layout_marginBottom="193dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="45dp"
+        android:layout_marginEnd="45dp" />
+
     <TextView
         android:text="Wellcome "
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        android:id="@+id/textView"
         android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/btnShowWel"
-        android:layout_alignEnd="@+id/btnShowWel"
-        android:layout_marginRight="70dp"
-        android:layout_marginEnd="70dp"
-        android:layout_marginTop="17dp"
-        android:id="@+id/textView" />
-
-    <Button
-        android:text="Show List"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="105dp"
-        android:layout_marginStart="105dp"
-        android:layout_marginTop="130dp"
-        android:id="@+id/btnShowWel"
-        android:layout_below="@+id/textView"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="71dp"
+        android:layout_marginStart="71dp" />
 
     <TextView
         android:text="admin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/btnShowWel"
+        android:id="@+id/tvAdminNameWel"
+        android:layout_alignBaseline="@+id/textView"
+        android:layout_alignBottom="@+id/textView"
         android:layout_alignRight="@+id/btnShowWel"
         android:layout_alignEnd="@+id/btnShowWel"
-        android:id="@+id/tvAdminNameWel" />
+        android:layout_marginRight="89dp"
+        android:layout_marginEnd="89dp" />
+
+    <Button
+        android:text="Add Hall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/btnShowWel"
+        android:layout_alignRight="@+id/textView"
+        android:layout_alignEnd="@+id/textView"
+        android:id="@+id/btnWelAdd" />
 </RelativeLayout>

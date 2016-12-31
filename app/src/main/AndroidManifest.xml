@@ -23,6 +23,7 @@
         <activity android:name=".views.EditHallDetail" />
         <activity android:name=".views.FragmentActivities.ShowHallsListActivity" />
         <activity android:name=".views.FragmentActivities.ShowHallsDetailActivity" />
+        <activity android:name=".views.CreateHall"></activity>
     </application>
 
 </manifest>
