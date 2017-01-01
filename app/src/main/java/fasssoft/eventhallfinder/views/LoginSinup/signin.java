@@ -9,6 +9,7 @@ import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -28,6 +29,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import fasssoft.eventhallfinder.R;
+import fasssoft.eventhallfinder.SharedPreferences.SharedPreference;
 import fasssoft.eventhallfinder.models.Database.DatabaseHelper;
 import fasssoft.eventhallfinder.models.DatumHallDetail;
 import fasssoft.eventhallfinder.models.DatumLogin;
@@ -50,6 +52,8 @@ public class signin extends AppCompatActivity {
     private DatumLogin login;
     boolean Network = false;
     DatabaseHelper helper = new DatabaseHelper(this);
+    CheckBox checkBox;
+    SharedPreference sharedPreference;
 
 
     @Override
@@ -62,7 +66,15 @@ public class signin extends AppCompatActivity {
         etPass = (EditText) findViewById(R.id.etPass);
         datumLoginList = new ArrayList<>();
         loginPojo = new LoginPojo();
-        // networkChangeReceiver=new NetworkChangeReceiver();
+        checkBox = (CheckBox) findViewById(R.id.checkBox);
+        sharedPreference = new SharedPreference(getApplicationContext());
+
+
+        etEmail.setText(sharedPreference.getEmail());
+        etPass.setText(sharedPreference.getPass());
+        checkBox.setChecked(sharedPreference.isCheck());
+
+
         this.registerReceiver(this.mConnReceiver,
                 new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
 
@@ -73,7 +85,6 @@ public class signin extends AppCompatActivity {
                 startActivity(it);
             }
         });///
-
         //start sigin in listner
         sign.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,12 +92,19 @@ public class signin extends AppCompatActivity {
                 // if start
                 if (Network == true) {
 
+                    if (checkBox.isChecked() == true) {
+                        sharedPreference.setEmail(etEmail.getText().toString());
+                        sharedPreference.setPass(etPass.getText().toString());
+                        sharedPreference.setCheck(true);
+                    } else {
+                        sharedPreference.destroyPref();
+                    }
+
                     StringRequest stringRequest = new StringRequest(Request.Method.GET, urlClass.apilogintests, new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
                             //   Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
                             try {
-
                                 JSONObject jsonObject = new JSONObject(response);
                                 JSONArray jsonArray = jsonObject.getJSONArray("data");
                                 arEmail = new String[jsonArray.length()];
@@ -111,12 +129,8 @@ public class signin extends AppCompatActivity {
                                     }
                                 }
                                 if (TAG == true) {
-                                    Toast.makeText(getApplicationContext(), "singn succ", Toast.LENGTH_LONG).show();
-
+                                    Toast.makeText(getApplicationContext(), "Signin Successfully :) ", Toast.LENGTH_LONG).show();
                                     Intent intent = new Intent(signin.this, Wellcome.class);
-//                              //  intent.putExtra("hallname",login.getHallname());
-//                                intent.putExtra("owname",login.getName());
-//                                intent.putExtra("hallloc",login.getLocation());
                                     startActivity(intent);
                                 } else {
                                     TAG = false;
@@ -134,14 +148,17 @@ public class signin extends AppCompatActivity {
                     });//string req
                     RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
                     requestQueue.add(stringRequest);
-
-
                     //if ends
                 }//iff ends
-
                 // offline start /////
                 else {
-
+                    if (checkBox.isChecked() == true) {
+                        sharedPreference.setEmail(etEmail.getText().toString());
+                        sharedPreference.setPass(etPass.getText().toString());
+                        sharedPreference.setCheck(true);
+                    } else {
+                        sharedPreference.destroyPref();
+                    }
                     String strEmail = etEmail.getText().toString();
                     String strPass = etPass.getText().toString();
                     String password = helper.searchPass(strEmail);
@@ -152,7 +169,6 @@ public class signin extends AppCompatActivity {
                     } else {
                         Toast.makeText(getApplicationContext(), "Email pass not Match", Toast.LENGTH_LONG).show();
                     }
-
                 }//else end
             }
         });
@@ -169,10 +185,8 @@ public class signin extends AppCompatActivity {
             boolean noConnectivity = intent.getBooleanExtra(ConnectivityManager.EXTRA_NO_CONNECTIVITY, false);
             String reason = intent.getStringExtra(ConnectivityManager.EXTRA_REASON);
             boolean isFailover = intent.getBooleanExtra(ConnectivityManager.EXTRA_IS_FAILOVER, false);
-
             NetworkInfo currentNetworkInfo = (NetworkInfo) intent.getParcelableExtra(ConnectivityManager.EXTRA_NETWORK_INFO);
             NetworkInfo otherNetworkInfo = (NetworkInfo) intent.getParcelableExtra(ConnectivityManager.EXTRA_OTHER_NETWORK_INFO);
-
             if (currentNetworkInfo.isConnected()) {
                 Network = true;
                 Toast.makeText(getApplicationContext(), "Connected", Toast.LENGTH_LONG).show();
@@ -182,6 +196,5 @@ public class signin extends AppCompatActivity {
             }
         }
     };////end reciver
-
 
 }

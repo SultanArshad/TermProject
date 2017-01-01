@@ -80,6 +80,16 @@
                 android:layout_height="1dp"
                 android:layout_marginBottom="10dp"
                 android:background="#ADCCE2"/>
+
+            <CheckBox
+                android:text="Remember"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/checkBox"
+                android:fontFamily="casual"
+                android:textColor="@color/primary_light"
+                android:textSize="14sp" />
+
             <TextView
                 android:id="@+id/txtViewSignIn"
                 android:layout_width="match_parent"
