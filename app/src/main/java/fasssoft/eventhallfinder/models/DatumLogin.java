@@ -4,7 +4,9 @@ package fasssoft.eventhallfinder.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class DatumLogin {
+import java.io.Serializable;
+
+public class DatumLogin implements Serializable {
 
     @SerializedName("id")
     @Expose

@@ -56,7 +56,9 @@ public class signin extends AppCompatActivity {
         etPass = (EditText) findViewById(R.id.etPass);
         datumLoginList = new ArrayList<>();
         loginPojo = new LoginPojo();
+      //  login = (DatumLogin) getArguments().getSerializable("employee");
 
+Intent i=getIntent();
 
         sback.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,7 +75,7 @@ public class signin extends AppCompatActivity {
                 StringRequest stringRequest = new StringRequest(Request.Method.GET, urlClass.apilogintests, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        // Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
+                      //   Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
                         try {
 
                             JSONObject jsonObject = new JSONObject(response);
@@ -101,10 +103,11 @@ public class signin extends AppCompatActivity {
                             }
                             if (TAG == true) {
                                 Toast.makeText(getApplicationContext(), "singn succ", Toast.LENGTH_LONG).show();
+
                                 Intent intent = new Intent(signin.this, Wellcome.class);
-                                intent.putExtra("hallname",login.getHallname());
-                                intent.putExtra("owname",login.getName());
-                                intent.putExtra("hallloc",login.getLocation());
+//                              //  intent.putExtra("hallname",login.getHallname());
+//                                intent.putExtra("owname",login.getName());
+//                                intent.putExtra("hallloc",login.getLocation());
                                 startActivity(intent);
                             } else {
                                 TAG = false;

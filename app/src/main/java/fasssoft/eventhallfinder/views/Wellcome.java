@@ -56,11 +56,11 @@ public class Wellcome extends AppCompatActivity {
         btnWellAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), CreateHall.class);
-                intent.putExtra("hallnme",ii.getStringExtra("hallname"));
-                intent.putExtra("owname",ii.getStringExtra("owname"));
-                intent.putExtra("hallloc",ii.getStringExtra("hallloc"));
-                startActivity(intent);
+                Intent in = new Intent(getApplicationContext(), CreateHall.class);
+//                intent.putExtra("hallnme",ii.getStringExtra("hallname"));
+//                intent.putExtra("owname",ii.getStringExtra("owname"));
+//                intent.putExtra("hallloc",ii.getStringExtra("hallloc"));
+                startActivity(in);
             }
         });
 
