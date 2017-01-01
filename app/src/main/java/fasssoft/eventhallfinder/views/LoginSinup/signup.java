@@ -1,6 +1,8 @@
 package fasssoft.eventhallfinder.views.LoginSinup;
 
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -20,6 +22,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import fasssoft.eventhallfinder.R;
+
+import fasssoft.eventhallfinder.models.Database.DatabaseHelper;
+import fasssoft.eventhallfinder.models.User;
 import fasssoft.eventhallfinder.utils.urlClass;
 import fasssoft.eventhallfinder.views.main;
 
@@ -28,6 +33,7 @@ public class signup extends AppCompatActivity {
     EditText etEmailSup, etPassSup, etHallNameSup, etFnameSup, etLocationSup;
     TextView sup;
     String pName, pEmail, pLocation, pHall, pPass;
+    DatabaseHelper helper = new DatabaseHelper(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +46,7 @@ public class signup extends AppCompatActivity {
         etPassSup = (EditText) findViewById(R.id.EtPassSup);
         etLocationSup = (EditText) findViewById(R.id.etLocationSup);
         sup = (TextView) findViewById(R.id.sup);
+
 
         sback.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,7 +87,27 @@ public class signup extends AppCompatActivity {
                 RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
                 requestQueue.add(stringRequestPost);
 
+                //////offline
+                String strname = etFnameSup.getText().toString();
+                String stremail = etEmailSup.getText().toString();
+                String strlocation = etLocationSup.getText().toString();
+                String strhallanme = etHallNameSup.getText().toString();
+                String strpass = etPassSup.getText().toString();
+
+
+                User u = new User();
+                u.setName(strname);
+                u.setEmail(stremail);
+                u.setLocation(strlocation);
+                u.setHallname(strhallanme);
+                u.setPassword(strpass);
+
+                helper.insertUser(u);
+                //////end offline work
+
+
             }
-        });
+        });///onclik end
+
     }
 }

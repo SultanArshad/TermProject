@@ -1,6 +1,11 @@
 package fasssoft.eventhallfinder.views.LoginSinup;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -23,6 +28,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import fasssoft.eventhallfinder.R;
+import fasssoft.eventhallfinder.models.Database.DatabaseHelper;
 import fasssoft.eventhallfinder.models.DatumHallDetail;
 import fasssoft.eventhallfinder.models.DatumLogin;
 import fasssoft.eventhallfinder.models.HallDetailPojo;
@@ -42,9 +48,9 @@ public class signin extends AppCompatActivity {
     LoginPojo loginPojo;
     Boolean TAG = false;
     private DatumLogin login;
-   //////
+    boolean Network = false;
+    DatabaseHelper helper = new DatabaseHelper(this);
 
-    /////
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,9 +62,9 @@ public class signin extends AppCompatActivity {
         etPass = (EditText) findViewById(R.id.etPass);
         datumLoginList = new ArrayList<>();
         loginPojo = new LoginPojo();
-      //  login = (DatumLogin) getArguments().getSerializable("employee");
-
-Intent i=getIntent();
+        // networkChangeReceiver=new NetworkChangeReceiver();
+        this.registerReceiver(this.mConnReceiver,
+                new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
 
         sback.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,62 +78,82 @@ Intent i=getIntent();
         sign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                StringRequest stringRequest = new StringRequest(Request.Method.GET, urlClass.apilogintests, new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                      //   Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
-                        try {
+                // if start
+                if (Network == true) {
 
-                            JSONObject jsonObject = new JSONObject(response);
-                            JSONArray jsonArray = jsonObject.getJSONArray("data");
-                            arEmail = new String[jsonArray.length()];
-                            arName = new String[jsonArray.length()];
-                            arPassword = new String[jsonArray.length()];
-                            datumLogin = new DatumLogin[jsonArray.length()];
-                            for (int i = 0; i < jsonArray.length(); i++) {
-                                JSONObject obj = jsonArray.getJSONObject(i);
-                                datumLogin[i] = new DatumLogin();
-                                datumLogin[i].setName(obj.getString("name"));
-                                datumLogin[i].setEmail(obj.getString("email"));
-                                datumLogin[i].setPassword(obj.getString("password"));
-                                datumLoginList.add(datumLogin[i]);
-                            }///// work after
-                            loginPojo.setData(datumLoginList);
-                            for (int i = 0; i < jsonArray.length(); i++) {
-                                if (datumLogin[i].getEmail().equals(etEmail.getText().toString()) && datumLogin[i].getPassword().equals(etPass.getText().toString())) {
-                                    TAG = true;
-                                    break;
-                                } else {
-                                    TAG = false;
+                    StringRequest stringRequest = new StringRequest(Request.Method.GET, urlClass.apilogintests, new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            //   Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
+                            try {
+
+                                JSONObject jsonObject = new JSONObject(response);
+                                JSONArray jsonArray = jsonObject.getJSONArray("data");
+                                arEmail = new String[jsonArray.length()];
+                                arName = new String[jsonArray.length()];
+                                arPassword = new String[jsonArray.length()];
+                                datumLogin = new DatumLogin[jsonArray.length()];
+                                for (int i = 0; i < jsonArray.length(); i++) {
+                                    JSONObject obj = jsonArray.getJSONObject(i);
+                                    datumLogin[i] = new DatumLogin();
+                                    datumLogin[i].setName(obj.getString("name"));
+                                    datumLogin[i].setEmail(obj.getString("email"));
+                                    datumLogin[i].setPassword(obj.getString("password"));
+                                    datumLoginList.add(datumLogin[i]);
+                                }///// work after
+                                loginPojo.setData(datumLoginList);
+                                for (int i = 0; i < jsonArray.length(); i++) {
+                                    if (datumLogin[i].getEmail().equals(etEmail.getText().toString()) && datumLogin[i].getPassword().equals(etPass.getText().toString())) {
+                                        TAG = true;
+                                        break;
+                                    } else {
+                                        TAG = false;
+                                    }
                                 }
-                            }
-                            if (TAG == true) {
-                                Toast.makeText(getApplicationContext(), "singn succ", Toast.LENGTH_LONG).show();
+                                if (TAG == true) {
+                                    Toast.makeText(getApplicationContext(), "singn succ", Toast.LENGTH_LONG).show();
 
-                                Intent intent = new Intent(signin.this, Wellcome.class);
+                                    Intent intent = new Intent(signin.this, Wellcome.class);
 //                              //  intent.putExtra("hallname",login.getHallname());
 //                                intent.putExtra("owname",login.getName());
 //                                intent.putExtra("hallloc",login.getLocation());
-                                startActivity(intent);
-                            } else {
-                                TAG = false;
-                                Toast.makeText(getApplicationContext(), "OOPS EMAIL PASSWORD NOT MATCH", Toast.LENGTH_LONG).show();
+                                    startActivity(intent);
+                                } else {
+                                    TAG = false;
+                                    Toast.makeText(getApplicationContext(), "OOPS EMAIL PASSWORD NOT MATCH", Toast.LENGTH_LONG).show();
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
                             }
-                            // pojo start
-
-                            // pojo end
-                        } catch (JSONException e) {
-                            e.printStackTrace();
                         }
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+                        }
+                    });//string req
+                    RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+                    requestQueue.add(stringRequest);
+
+
+                    //if ends
+                }//iff ends
+
+                // offline start /////
+                else {
+
+                    String strEmail = etEmail.getText().toString();
+                    String strPass = etPass.getText().toString();
+                    String password = helper.searchPass(strEmail);
+                    if (strPass.equals(password)) {
+                        Toast.makeText(getApplicationContext(), "signIn successfully offline ", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(signin.this, Wellcome.class);
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Email pass not Match", Toast.LENGTH_LONG).show();
                     }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
-                    }
-                });//string req
-                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-                requestQueue.add(stringRequest);
+
+                }//else end
             }
         });
     }
@@ -137,4 +163,25 @@ Intent i=getIntent();
         super.onStop();
         TAG = false;
     }
+
+    private BroadcastReceiver mConnReceiver = new BroadcastReceiver() {
+        public void onReceive(Context context, Intent intent) {
+            boolean noConnectivity = intent.getBooleanExtra(ConnectivityManager.EXTRA_NO_CONNECTIVITY, false);
+            String reason = intent.getStringExtra(ConnectivityManager.EXTRA_REASON);
+            boolean isFailover = intent.getBooleanExtra(ConnectivityManager.EXTRA_IS_FAILOVER, false);
+
+            NetworkInfo currentNetworkInfo = (NetworkInfo) intent.getParcelableExtra(ConnectivityManager.EXTRA_NETWORK_INFO);
+            NetworkInfo otherNetworkInfo = (NetworkInfo) intent.getParcelableExtra(ConnectivityManager.EXTRA_OTHER_NETWORK_INFO);
+
+            if (currentNetworkInfo.isConnected()) {
+                Network = true;
+                Toast.makeText(getApplicationContext(), "Connected", Toast.LENGTH_LONG).show();
+            } else {
+                Network = false;
+                Toast.makeText(getApplicationContext(), "Not Connected", Toast.LENGTH_LONG).show();
+            }
+        }
+    };////end reciver
+
+
 }
