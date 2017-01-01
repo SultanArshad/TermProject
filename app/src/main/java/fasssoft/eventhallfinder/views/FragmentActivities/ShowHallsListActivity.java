@@ -14,6 +14,7 @@ import fasssoft.eventhallfinder.models.DatumHallDetail;
 public class ShowHallsListActivity extends AppCompatActivity implements ShowHallsListFragment.ListItemSelectedListener {
 
     private boolean isRotate = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +32,7 @@ public class ShowHallsListActivity extends AppCompatActivity implements ShowHall
             fragmentEmployeesList.setActivateOnItemClick(true);
         }
     }
+
     @Override
     public void ItemSelected(DatumHallDetail employee) {
         if (isRotate) {

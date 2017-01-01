@@ -30,20 +30,19 @@ import fasssoft.eventhallfinder.views.FragmentActivities.ShowHallsListActivity;
 import fasssoft.eventhallfinder.views.LoginSinup.signin;
 
 public class Wellcome extends AppCompatActivity {
-    Button btnShowWel,btnWellAdd;
-    DatumHallDetail[] datumHallDetails;
-   ArrayList<DatumHallDetail> datumHallDetailsList;
-   HallDetailPojo hallDetailPojo;
+    Button btnShowWel, btnWellAdd;
+    ArrayList<DatumHallDetail> datumHallDetailsList;
+    HallDetailPojo hallDetailPojo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wellcome);
         btnShowWel = (Button) findViewById(R.id.btnShowWel);
-        btnWellAdd=(Button)findViewById(R.id.btnWelAdd) ;
-       datumHallDetailsList = new ArrayList<>();
+        btnWellAdd = (Button) findViewById(R.id.btnWelAdd);
+        datumHallDetailsList = new ArrayList<>();
         hallDetailPojo = new HallDetailPojo();
-        final Intent ii=getIntent();
+
         btnShowWel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,17 +51,12 @@ public class Wellcome extends AppCompatActivity {
             }
         });
 
-
         btnWellAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent in = new Intent(getApplicationContext(), CreateHall.class);
-//                intent.putExtra("hallnme",ii.getStringExtra("hallname"));
-//                intent.putExtra("owname",ii.getStringExtra("owname"));
-//                intent.putExtra("hallloc",ii.getStringExtra("hallloc"));
                 startActivity(in);
             }
         });
-
     }
 }

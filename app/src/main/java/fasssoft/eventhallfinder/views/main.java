@@ -14,19 +14,20 @@ import fasssoft.eventhallfinder.views.LoginSinup.signup;
 public class main extends AppCompatActivity {
     TextView sin;
     LinearLayout circle;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        circle = (LinearLayout)findViewById(R.id.circle);
-        sin = (TextView)findViewById(R.id.txtViewSignIn);
+        circle = (LinearLayout) findViewById(R.id.circle);
+        sin = (TextView) findViewById(R.id.txtViewSignIn);
 
         circle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent it = new Intent(main.this,signup.class);
+                Intent it = new Intent(main.this, signup.class);
                 startActivity(it);
 
             }
@@ -34,7 +35,7 @@ public class main extends AppCompatActivity {
         sin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(main.this,signin.class);
+                Intent it = new Intent(main.this, signin.class);
                 startActivity(it);
             }
         });

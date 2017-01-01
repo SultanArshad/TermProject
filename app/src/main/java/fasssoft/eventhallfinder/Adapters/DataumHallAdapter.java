@@ -20,12 +20,13 @@ import fasssoft.eventhallfinder.models.DatumHallDetail;
 
 public class DataumHallAdapter extends ArrayAdapter {
     DatumHallDetail datumHallDetail;
+
     public DataumHallAdapter(Context context, int resource, List<DatumHallDetail> objects) {
-        super(context, resource,  objects);
+        super(context, resource, objects);
     }
 
-    public DataumHallAdapter(Context context, int resource, int  textViewResourceId) {
-        super(context, resource,   textViewResourceId);
+    public DataumHallAdapter(Context context, int resource, int textViewResourceId) {
+        super(context, resource, textViewResourceId);
     }
 
 
@@ -33,32 +34,27 @@ public class DataumHallAdapter extends ArrayAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-
-
-        View v=convertView;
-        if(v==convertView){
+        View v = convertView;
+        if (v == convertView) {
             LayoutInflater vI;
-            vI=LayoutInflater.from(getContext());
-            v=vI.inflate(R.layout.datum_hall_adapter_layout,null);
+            vI = LayoutInflater.from(getContext());
+            v = vI.inflate(R.layout.datum_hall_adapter_layout, null);
         }
-       datumHallDetail=(DatumHallDetail) getItem(position);
-        TextView tvHallName=(TextView)v.findViewById(R.id.tvDatumAdpHallName);
-        TextView tvHallLoc=(TextView)v.findViewById(R.id.tvDatumAdpHallLoc);
-        if(tvHallLoc!=null){
+        datumHallDetail = (DatumHallDetail) getItem(position);
+        TextView tvHallName = (TextView) v.findViewById(R.id.tvDatumAdpHallName);
+        TextView tvHallLoc = (TextView) v.findViewById(R.id.tvDatumAdpHallLoc);
+        if (tvHallLoc != null) {
             tvHallLoc.setText(datumHallDetail.getHallLocation());
         }
-        if(tvHallName!=null){
+        if (tvHallName != null) {
             tvHallName.setText(datumHallDetail.getHallname());
         }
         return v;
     }
 
-
     public DatumHallDetail getDatumHallDetail() {
         return datumHallDetail;
     }
-
-
 
     @Nullable
     @Override

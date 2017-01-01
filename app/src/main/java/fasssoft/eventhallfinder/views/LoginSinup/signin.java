@@ -163,7 +163,7 @@ public class signin extends AppCompatActivity {
                     String strPass = etPass.getText().toString();
                     String password = helper.searchPass(strEmail);
                     if (strPass.equals(password)) {
-                        Toast.makeText(getApplicationContext(), "signIn successfully offline ", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "signIn successfully --> ", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(signin.this, Wellcome.class);
                         startActivity(intent);
                     } else {

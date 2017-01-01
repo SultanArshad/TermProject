@@ -25,7 +25,8 @@ import fasssoft.eventhallfinder.views.FragmentActivities.ShowHallsListActivity;
 
 public class CreateHall extends AppCompatActivity {
     EditText etHalname, etHallloc, etOwname, etOwnum;
-Button Crhal;
+    Button Crhal;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,11 +36,7 @@ Button Crhal;
         etOwname = (EditText) findViewById(R.id.etChOwName);
         etOwnum = (EditText) findViewById(R.id.etChMob);
         etHallloc = (EditText) findViewById(R.id.etChLoc);
-        Crhal=(Button) findViewById(R.id.btnChCreat);
-//        etHalname.setText(intent.getStringExtra("hallnae"))
-//        etOwname.setText(intent.getStringExtra("owname"));
-//        etOwnum.setText(intent.getStringExtra("ownumber"));
-//        etHallloc.setText(intent.getStringExtra("hallloc"));
+        Crhal = (Button) findViewById(R.id.btnChCreat);
 
         ////////
         Crhal.setOnClickListener(new View.OnClickListener() {
@@ -48,7 +45,7 @@ Button Crhal;
                 StringRequest stringRequestPost = new StringRequest(Request.Method.POST, urlClass.apihalldetails, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                   //     Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
+                        //     Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
                     }
                 }, new Response.ErrorListener() {
                     @Override
@@ -67,13 +64,10 @@ Button Crhal;
                 };//
                 RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
                 requestQueue.add(stringRequestPost);
-                Intent intent1=new Intent(getApplicationContext(),ShowHallsListActivity.class);
+                Toast.makeText(getApplicationContext(), "Hall Created  Sucessfully", Toast.LENGTH_LONG).show();
+                Intent intent1 = new Intent(getApplicationContext(), ShowHallsListActivity.class);
                 startActivity(intent1);
             }
         });
-
-        ///////
-
-
     }
 }

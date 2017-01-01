@@ -7,10 +7,6 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 public class DatumHallDetail implements Serializable {
-/////serial
-//private static final long serialVersionUID = -1213949467658913456L;
-    ////
-
 
     @SerializedName("id")
     @Expose

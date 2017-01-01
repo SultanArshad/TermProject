@@ -26,6 +26,7 @@ import fasssoft.eventhallfinder.R;
 import fasssoft.eventhallfinder.models.Database.DatabaseHelper;
 import fasssoft.eventhallfinder.models.User;
 import fasssoft.eventhallfinder.utils.urlClass;
+import fasssoft.eventhallfinder.views.Wellcome;
 import fasssoft.eventhallfinder.views.main;
 
 public class signup extends AppCompatActivity {
@@ -47,7 +48,6 @@ public class signup extends AppCompatActivity {
         etLocationSup = (EditText) findViewById(R.id.etLocationSup);
         sup = (TextView) findViewById(R.id.sup);
 
-
         sback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,7 +66,7 @@ public class signup extends AppCompatActivity {
                 StringRequest stringRequestPost = new StringRequest(Request.Method.POST, urlClass.apilogintests, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
+                        // Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
                     }
                 }, new Response.ErrorListener() {
                     @Override
@@ -94,17 +94,17 @@ public class signup extends AppCompatActivity {
                 String strhallanme = etHallNameSup.getText().toString();
                 String strpass = etPassSup.getText().toString();
 
-
                 User u = new User();
                 u.setName(strname);
                 u.setEmail(stremail);
                 u.setLocation(strlocation);
                 u.setHallname(strhallanme);
                 u.setPassword(strpass);
-
                 helper.insertUser(u);
                 //////end offline work
-
+                Toast.makeText(getApplicationContext(), "SignUp Sucessfully", Toast.LENGTH_LONG).show();
+                Intent i = new Intent(signup.this, Wellcome.class);
+                startActivity(i);
 
             }
         });///onclik end

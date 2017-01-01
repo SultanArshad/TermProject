@@ -32,8 +32,7 @@ import static fasssoft.eventhallfinder.R.id.btnEdit;
 
 public class ShowHallsDetailFragment extends Fragment {
     Button btnEdit, btnDel;
-    int  id;
-
+    int id;
     private DatumHallDetail employee;
 
     public static ShowHallsDetailFragment newInstance(DatumHallDetail employee) {
@@ -48,7 +47,6 @@ public class ShowHallsDetailFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         employee = (DatumHallDetail) getArguments().getSerializable("employee");
-
     }
 
     @Override
@@ -59,18 +57,14 @@ public class ShowHallsDetailFragment extends Fragment {
         TextView tvLoc = (TextView) view.findViewById(R.id.tvDetailLoc);
         TextView tvOname = (TextView) view.findViewById(R.id.tvDetailOwName);
         TextView tvOnum = (TextView) view.findViewById(R.id.tvDetailOwNumber);
-
-
-
         btnDel = (Button) view.findViewById(R.id.btnDel);
         btnEdit = (Button) view.findViewById(R.id.btnEdit);
-
 
         tvHallName.setText(employee.getHallname());
         tvOname.setText(employee.getOwnername());
         tvOnum.setText(employee.getOwnerMobile());
         tvLoc.setText(employee.getHallLocation());
-        id=employee.getId();
+        id = employee.getId();
 
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,8 +74,7 @@ public class ShowHallsDetailFragment extends Fragment {
                 intent.putExtra("hallowname", employee.getOwnername());
                 intent.putExtra("hallownumber", employee.getOwnerMobile());
                 intent.putExtra("hallloc", employee.getHallLocation());
-                intent.putExtra("hallid",employee.getId());
-
+                intent.putExtra("hallid", employee.getId());
                 startActivity(intent);
             }
         });/// btnedit one end
@@ -89,11 +82,10 @@ public class ShowHallsDetailFragment extends Fragment {
         btnDel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 StringRequest stringRequestPost = new StringRequest(Request.Method.DELETE, urlClass.apihalldetails + id, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Toast.makeText(getActivity(), response, Toast.LENGTH_LONG).show();
+                        // Toast.makeText(getActivity(), response, Toast.LENGTH_LONG).show();
                     }
                 }, new Response.ErrorListener() {
                     @Override
@@ -103,14 +95,11 @@ public class ShowHallsDetailFragment extends Fragment {
                 });
                 RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
                 requestQueue.add(stringRequestPost);
-               Intent i = new Intent(getActivity(), ShowHallsListActivity.class);
-                Toast.makeText(getActivity(),"Information Deleted Successfully",Toast.LENGTH_LONG);
-               startActivity(i);
-
+                Intent i = new Intent(getActivity(), ShowHallsListActivity.class);
+                Toast.makeText(getActivity(), "Information Deleted Successfully", Toast.LENGTH_LONG);
+                startActivity(i);
             }
         });
         return view;
-
     }
-
 }

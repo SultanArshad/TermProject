@@ -7,7 +7,6 @@ package fasssoft.eventhallfinder.utils;
 public class urlClass {
 
     public static final String url = "http://192.168.10.4/api/";
-    public static  final String apilogintests=url+"logintests";
-    public static  final String apihalldetails=url+"halldetails/";
-
+    public static final String apilogintests = url + "logintests";
+    public static final String apihalldetails = url + "halldetails/";
 }

@@ -12,16 +12,20 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.util.ArrayList;
+
 import fasssoft.eventhallfinder.Adapters.DataumHallAdapter;
 import fasssoft.eventhallfinder.R;
 import fasssoft.eventhallfinder.models.DatumHallDetail;
@@ -36,22 +40,18 @@ public class ShowHallsListFragment extends Fragment {
     HallDetailPojo hallDetailPojo;
     private ListView lvEmployees;
     private DataumHallAdapter adapterEmployees;
-    //ArrayAdapter<DatumHallDetail>
     private ListItemSelectedListener listener;
-    View view;
-
 
     @Override
     public void onCreate(Bundle savedInstantState) {
         super.onCreate(savedInstantState);
-        ////////
         datumHallDetailsList = new ArrayList<>();
         hallDetailPojo = new HallDetailPojo();
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, urlClass.apihalldetails, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Toast.makeText(getActivity(), response, Toast.LENGTH_LONG).show();
+                // Toast.makeText(getActivity(), response, Toast.LENGTH_LONG).show();
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     JSONArray jsonArray = jsonObject.getJSONArray("data");
@@ -67,7 +67,6 @@ public class ShowHallsListFragment extends Fragment {
                         datumHallDetailsList.add(datumHallDetails[i]);
                     }///// work after
                     hallDetailPojo.setData(datumHallDetailsList);
-                //    adapterEmployees = new ArrayAdapter<DatumHallDetail>(getActivity(), R.layout.datum_hall_adapter_layout, datumHallDetailsList);
                     adapterEmployees = new DataumHallAdapter(getActivity(), R.layout.datum_hall_adapter_layout, datumHallDetailsList);
                     lvEmployees.setAdapter(adapterEmployees);
                 } catch (JSONException e) {
@@ -82,17 +81,12 @@ public class ShowHallsListFragment extends Fragment {
         });
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
         requestQueue.add(stringRequest);
-        ///////
-
     }///on creat ends
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_show_halls_list, container, false);
         lvEmployees = (ListView) view.findViewById(R.id.lvEmployees);
-        /////////
-
-        /////////
 
         lvEmployees.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -111,7 +105,6 @@ public class ShowHallsListFragment extends Fragment {
     public void setActivateOnItemClick(boolean activateOnItemClick) {
         lvEmployees.setChoiceMode(activateOnItemClick ? ListView.CHOICE_MODE_SINGLE : ListView.CHOICE_MODE_NONE);
     }
-
 
     @Override
     public void onAttach(Activity activity) {

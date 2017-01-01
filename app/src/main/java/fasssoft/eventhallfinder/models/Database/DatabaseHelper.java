@@ -17,7 +17,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "users.db";
     private static final String TABLE_NAME = "users";
-
     private static final String COLUMN_ID = "id";
     private static final String COLUMN_NAME = "name";
     private static final String COLUMN_EMAIL = "email";
@@ -31,18 +30,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String TABLE_CREATE = "create table users (id integer primary key not null , " +
             "name text not null , email text not null , password text not null , hallname text not null , location text not null);";
-    // , created_at text not null , updated_at text not null , deleted_at text not null
-
-//    "id": 1,
-//            "name": "1sultan arshad",
-//            "email": "1sultan@gmail.com",
-//            "password": "1sultan123",
-//            "hallname": "1silk event",
-//            "location": "1khachakhooo",
-//            "created_at": "2016-12-27 20:03:39",
-//            "updated_at": "2016-12-27 20:07:16",
-//            "deleted_at": null
-
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -52,7 +39,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(TABLE_CREATE);
         this.db = db;
-
     }
 
     @Override
@@ -66,7 +52,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db = this.getReadableDatabase();
         String queery = "select email,password from " + TABLE_NAME;
         Cursor cursor = db.rawQuery(queery, null);
-        String aEmail, bPass="not found";
+        String aEmail, bPass = "not found";
         if (cursor.moveToFirst()) {
             do {
                 aEmail = cursor.getString(0);
@@ -77,12 +63,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 }
             } while (cursor.moveToNext());
         }
-
         return bPass;
     }
 
     public void insertUser(User u) {
-
         db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMN_NAME, u.getName());

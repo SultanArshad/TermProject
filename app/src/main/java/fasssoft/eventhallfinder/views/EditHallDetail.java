@@ -37,20 +37,20 @@ public class EditHallDetail extends AppCompatActivity {
         etHallOwnum = (EditText) findViewById(R.id.etEdOwNum);
         etHallLoc = (EditText) findViewById(R.id.etEdLoc);
         btnUp = (Button) findViewById(R.id.btnEdUp);
-
         Intent intent = getIntent();
         etHallName.setText(intent.getStringExtra("hallname"));
         etHallOwName.setText(intent.getStringExtra("hallowname"));
         etHallOwnum.setText(intent.getStringExtra("hallownumber"));
         etHallLoc.setText(intent.getStringExtra("hallloc"));
         id = intent.getIntExtra("hallid", 0);
+
         btnUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 StringRequest stringRequestPost = new StringRequest(Request.Method.PUT, urlClass.apihalldetails + id, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
+                        // Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
                     }
                 }, new Response.ErrorListener() {
                     @Override
@@ -70,12 +70,10 @@ public class EditHallDetail extends AppCompatActivity {
                 RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
                 requestQueue.add(stringRequestPost);
                 Intent i = new Intent(getApplicationContext(), ShowHallsListActivity.class);
-                Toast.makeText(getApplicationContext(),"Information Updated Successfuly",Toast.LENGTH_LONG);
+                Toast.makeText(getApplicationContext(), "Information Updated Successfuly", Toast.LENGTH_LONG);
                 startActivity(i);
-
             }
         });
-
 
     }
 }

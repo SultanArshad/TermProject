@@ -11,17 +11,16 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class SharedPreference {
 
-boolean check;
+    boolean check;
     SharedPreferences pref;
-    private  String email="not set",pass="not set";
+    private String email = "not set", pass = "not set";
     SharedPreferences.Editor editor;
     Context context;
 
     public SharedPreference(Context context) {
-        this.context=context;
+        this.context = context;
         pref = context.getSharedPreferences("MyPref", MODE_PRIVATE);
-         editor = pref.edit();
-
+        editor = pref.edit();
     }
 
     public void setCheck(boolean check) {
@@ -32,7 +31,7 @@ boolean check;
 
     public boolean isCheck() {
         Boolean ch;
-        ch= pref.getBoolean("key_check",true);
+        ch = pref.getBoolean("key_check", true);
         return ch;
     }
 
@@ -50,22 +49,20 @@ boolean check;
 
     public String getEmail() {
         String em;
-       em= pref.getString("key_email",null);
+        em = pref.getString("key_email", null);
         return em;
     }
 
 
     public String getPass() {
         String pa;
-        pa= pref.getString("key_pass",null);
+        pa = pref.getString("key_pass", null);
         return pa;
-
     }
 
-public void destroyPref(){
-    editor.clear();
-    editor.commit();
-}
-
+    public void destroyPref() {
+        editor.clear();
+        editor.commit();
+    }
 
 }
