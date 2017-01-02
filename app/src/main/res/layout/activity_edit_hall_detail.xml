@@ -2,7 +2,8 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:background="@drawable/img">
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_showhalls"
@@ -25,7 +26,10 @@
         android:layout_marginLeft="18dp"
         android:layout_marginStart="18dp"
         android:layout_marginTop="79dp"
-        android:id="@+id/textView2" />
+        android:id="@+id/textView2"
+        android:textColor="@color/accent"
+        android:textSize="22sp"
+        android:fontFamily="monospace" />
 
     <TextView
         android:text="Owner name"
@@ -35,7 +39,10 @@
         android:layout_alignLeft="@+id/textView2"
         android:layout_alignStart="@+id/textView2"
         android:layout_marginTop="32dp"
-        android:id="@+id/textView3" />
+        android:id="@+id/textView3"
+        android:textColor="@color/accent"
+        android:textSize="22sp"
+        android:fontFamily="monospace" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -69,7 +76,10 @@
         android:id="@+id/textView4"
         android:layout_below="@+id/etEdOwNaeme"
         android:layout_alignLeft="@+id/textView3"
-        android:layout_alignStart="@+id/textView3" />
+        android:layout_alignStart="@+id/textView3"
+        android:textSize="22sp"
+        android:textColor="@color/accent"
+        android:fontFamily="monospace" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -90,7 +100,10 @@
         android:layout_alignLeft="@+id/textView4"
         android:layout_alignStart="@+id/textView4"
         android:layout_marginTop="52dp"
-        android:id="@+id/textView5" />
+        android:id="@+id/textView5"
+        android:textSize="22sp"
+        android:textColor="@color/accent"
+        android:fontFamily="monospace" />
 
     <EditText
         android:layout_width="wrap_content"

@@ -9,7 +9,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="fasssoft.eventhallfinder.views.CreateHall"
-    android:theme="@style/AppTheme">
+    android:theme="@style/AppTheme"
+     android:background="@drawable/img">
 
     <EditText
         android:layout_width="wrap_content"
@@ -30,7 +31,10 @@
         android:layout_alignBaseline="@+id/etChHname"
         android:layout_alignBottom="@+id/etChHname"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:fontFamily="monospace"
+        android:textSize="22sp"
+        android:textColor="@color/accent" />
 
     <TextView
         android:text="Owner Name"
@@ -40,7 +44,10 @@
         android:layout_alignRight="@+id/textView10"
         android:layout_alignEnd="@+id/textView10"
         android:layout_marginTop="61dp"
-        android:id="@+id/textView11" />
+        android:id="@+id/textView11"
+        android:textSize="22sp"
+        android:fontFamily="monospace"
+        android:textColor="@color/accent" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -61,7 +68,10 @@
         android:layout_alignLeft="@+id/textView10"
         android:layout_alignStart="@+id/textView10"
         android:layout_marginTop="57dp"
-        android:id="@+id/textView12" />
+        android:id="@+id/textView12"
+        android:textSize="22sp"
+        android:fontFamily="monospace"
+        android:textColor="@color/accent" />
 
     <TextView
         android:text="Location"
@@ -71,7 +81,10 @@
         android:layout_alignLeft="@+id/textView12"
         android:layout_alignStart="@+id/textView12"
         android:layout_marginTop="59dp"
-        android:id="@+id/textView13" />
+        android:id="@+id/textView13"
+        android:textSize="22sp"
+        android:textColor="@color/accent"
+        android:fontFamily="monospace" />
 
     <EditText
         android:layout_width="wrap_content"

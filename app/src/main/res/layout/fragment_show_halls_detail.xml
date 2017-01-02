@@ -1,9 +1,12 @@
-
+<ScrollView   android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="fasssoft.eventhallfinder.Fragments.ShowHallsDetailFragment">
+        tools:context="fasssoft.eventhallfinder.Fragments.ShowHallsDetailFragment"
+       >
 
         <TextView
             android:id="@+id/tvDetailHallName"
@@ -13,7 +16,10 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="17dp"
             android:text="Hall Name"
-            android:textSize="29sp" />
+            android:textSize="30sp"
+            android:fontFamily="monospace"
+            android:textColor="@color/common_signin_btn_default_background"
+            android:textStyle="normal|bold" />
 
         <TextView
             android:id="@+id/tvDetailOwNumber"
@@ -24,8 +30,9 @@
             android:layout_alignStart="@+id/tvDetailLoc"
             android:layout_below="@+id/tvDetailOwName"
             android:layout_marginTop="38dp"
-            android:text="number"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:textColor="@color/common_signin_btn_default_background"
+            android:fontFamily="monospace" />
 
         <TextView
             android:id="@+id/tvDetailLoc"
@@ -35,8 +42,9 @@
             android:layout_alignStart="@+id/tvDetailOwName"
             android:layout_below="@+id/tvDetailOwNumber"
             android:layout_marginTop="51dp"
-            android:text="loca"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:fontFamily="monospace"
+            android:textColor="@color/common_signin_btn_default_background" />
 
         <Button
             android:id="@+id/btnDel"
@@ -65,7 +73,10 @@
             android:layout_alignTop="@+id/tvDetailOwNumber"
             android:layout_alignRight="@+id/textView6"
             android:layout_alignEnd="@+id/textView6"
-            android:id="@+id/textView7" />
+            android:id="@+id/textView7"
+            android:fontFamily="monospace"
+            android:textColor="@color/accent"
+            android:textSize="15sp" />
 
         <TextView
             android:text="Location"
@@ -74,20 +85,24 @@
             android:layout_above="@+id/btnDel"
             android:layout_alignLeft="@+id/textView7"
             android:layout_alignStart="@+id/textView7"
-            android:id="@+id/textView8" />
+            android:id="@+id/textView8"
+            android:textSize="15sp"
+            android:fontFamily="monospace"
+            android:textColor="@color/accent" />
 
         <TextView
             android:id="@+id/tvDetailOwName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="37dp"
-            android:text="oname"
-            android:textSize="15sp"
+            android:textSize="20sp"
             android:layout_below="@+id/tvDetailHallName"
             android:layout_alignRight="@+id/tvDetailHallName"
             android:layout_alignEnd="@+id/tvDetailHallName"
             android:layout_marginRight="18dp"
-            android:layout_marginEnd="18dp" />
+            android:layout_marginEnd="18dp"
+            android:fontFamily="monospace"
+            android:textColor="@color/common_signin_btn_default_background" />
 
         <TextView
             android:text="Owner Name"
@@ -96,5 +111,9 @@
             android:id="@+id/textView6"
             android:layout_alignTop="@+id/tvDetailOwName"
             android:layout_alignLeft="@+id/btnDel"
-            android:layout_alignStart="@+id/btnDel" />
+            android:layout_alignStart="@+id/btnDel"
+            android:textColor="@color/accent"
+            android:textSize="15sp"
+            android:fontFamily="monospace" />
     </RelativeLayout>
+</ScrollView>

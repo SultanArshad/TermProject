@@ -2,7 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="fasssoft.eventhallfinder.Fragments.ShowHallsListFragment">
+    tools:context="fasssoft.eventhallfinder.Fragments.ShowHallsListFragment"
+    >
 
     <ListView
         android:id="@+id/lvEmployees"
@@ -10,6 +11,13 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:background="@color/accent"></ListView>
+        android:background="@color/primary_light"
+        android:divider="@drawable/angle"
+        android:theme="@style/Base.Theme.AppCompat.Light.DarkActionBar"
+        android:footerDividersEnabled="true"
+        android:headerDividersEnabled="true"
+        style="@android:style/Widget.ExpandableListView"
+        android:touchscreenBlocksFocus="?android:attr/windowDrawsSystemBarBackgrounds"
+        android:smoothScrollbar="false"></ListView>
 
 </FrameLayout>

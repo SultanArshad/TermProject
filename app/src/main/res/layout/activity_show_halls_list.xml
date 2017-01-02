@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/img">
 
     <fragment
         android:name="fasssoft.eventhallfinder.Fragments.ShowHallsListFragment"
@@ -13,6 +14,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        tools:layout="@layout/fragment_show_halls_list" />
+        tools:layout="@layout/fragment_show_halls_list"
+       />
 
 </RelativeLayout>
