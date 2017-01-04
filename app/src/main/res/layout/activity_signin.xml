@@ -44,8 +44,7 @@
                 android:background="#0000"
                 android:padding="16dp"
                 android:drawableRight="@drawable/user"
-                android:layout_marginRight="35dp"
-                android:text="1sultan@gmail.com" />
+                android:layout_marginRight="35dp" />
             <View
                 android:layout_width="match_parent"
                 android:layout_marginLeft="40dp"
@@ -66,8 +65,7 @@
                 android:background="#0000"
                 android:padding="16dp"
                 android:drawableRight="@drawable/pasword"
-                android:layout_marginRight="35dp"
-                android:text="1sultan123" />
+                android:layout_marginRight="35dp" />
             <View
                 android:layout_width="match_parent"
                 android:layout_marginLeft="40dp"
